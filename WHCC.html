@@ -34,9 +34,7 @@
         </tr>
         </thead>
         <tbody>
-
         </tbody>
-
     </table>
 </div>
 
@@ -65,26 +63,24 @@
                 .then(response => response.json())
                 .then(data => {
 
-                    var tableRef = document.getElementById('myTable').getElementsByTagName('tbody')[0];
+                    let tableRef = document.getElementById('myTable').getElementsByTagName('tbody')[0];
 
-                    var newRow   = tableRef.insertRow(tableRef.rows.length);
+                    let newRow   = tableRef.insertRow(tableRef.rows.length);
 
-                    var newCell  = newRow.insertCell(0);
-                    var newText  = document.createTextNode(new Date(data.time * 1000).toLocaleString());
+                    let dateCell  = newRow.insertCell(0);
+                    let dateText  = document.createTextNode(new Date(data.time * 1000).toLocaleString());
 
-                    var newCell1  = newRow.insertCell(1);
-                    var newText1  = document.createTextNode(data.title);
-
-                    const anchor = document.createElement('a');
+                    let titleCell  = newRow.insertCell(1);
+                    let anchor = document.createElement('a');
                     anchor.href = data.url;
                     anchor.innerText = data.title;
 
-                    var newCell2  = newRow.insertCell(2);
-                    var newText2  = document.createTextNode(data.by);
+                    let authorCell  = newRow.insertCell(2);
+                    let authorText  = document.createTextNode(data.by);
 
-                    newCell.appendChild(newText);
-                    newCell1.appendChild(anchor);
-                    newCell2.appendChild(newText2);
+                    dateCell.appendChild(dateText);
+                    titleCell.appendChild(anchor);
+                    authorCell.appendChild(authorText);
                 });
         }
         nextItem += 20;
